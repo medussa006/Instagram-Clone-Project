@@ -1,0 +1,56 @@
+<!-- Modal to add starts here -->
+<div id="add-post" class="modal modal--animate-scale mc4-flex mc4-flex-center mc4-bg-black mc4-bg-opacity-90% mc4-padding-md js-modal close-btn">
+  <div class="modal__content mc4-width-100% mc4-max-width-xs mc4-max-height-100% mc4-overflow-auto mc4-bg mc4-radius-md mc4-inner-glow mc4-shadow-md" role="alertdialog" aria-labelledby="modal-title-1" aria-describedby="modal-description-1">
+    <header class="mc4-bg-contrast-lower mc4-bg-opacity-50% mc4-padding-y-sm mc4-padding-x-md mc4-flex mc4-items-center mc4-justify-between">
+      <h1 id="modal-title-1" class="mc4-text-truncate mc4-text-md">Add a post</h1>
+
+      <button class="modal__close-btn modal__close-btn--inner mc4-hide@md js-modal__close js-tab-focus" id="close-btn">
+        <svg class="mc4-icon mc4-icon--xs" viewBox="0 0 16 16">
+          <title>Close modal window</title>
+          <g stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10">
+            <line x1="13.5" y1="2.5" x2="2.5" y2="13.5"></line>
+            <line x1="2.5" y1="2.5" x2="13.5" y2="13.5"></line>
+          </g>
+        </svg>
+      </button>
+    </header>
+
+    <div class="mc4-padding-y-sm mc4-padding-x-md">
+      <!-- form to add a job posting below -->
+      <form class="p-6" action="/post/createPost" enctype="multipart/form-data" method="POST">
+        <fieldset class="fw3-margin-bottom-md">
+          <div class="fw3-grid fw3-gap-sm">
+            <div>
+              <label class="fw3-form-label fw3-margin-bottom-2xs" for="title">Post Title</label>
+              <input class="fw3-form-control fw3-width-100%" type="text" name="title" id="title" required>
+            </div>
+
+            <div>
+              <label class="fw3-form-label fw3-margin-bottom-2xs" for="image">Post Image</label>
+              <input class="fw3-form-control fw3-width-100%" type="file" name="image" id="image">
+            </div>
+          </div>
+
+        </fieldset>
+
+        <footer class="mc4-padding-md">
+          <div class="mc4-flex mc4-justify-end mc4-gap-xs">
+            <button class="mc4-btn mc4-btn--subtle js-modal__close" id="close-btn">Cancel</button>
+            <button type="submit" class="mc4-btn mc4-btn--primary" id="close-btn">Add</button>
+          </div>
+        </footer>
+      </form>
+    </div>
+  </div>
+
+  <button class="modal__close-btn modal__close-btn--outer mc4-display@md js-modal__close js-tab-focus" id="close-btn">
+    <svg class="mc4-icon mc4-icon--sm" viewBox="0 0 24 24">
+      <title>Close modal window</title>
+      <g fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="3" y1="3" x2="21" y2="21" />
+        <line x1="21" y1="3" x2="3" y2="21" />
+      </g>
+    </svg>
+  </button>
+</div>
+<!-- Modal to add ends here -->

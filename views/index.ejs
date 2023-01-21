@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Instagram</title>
+  <link rel="stylesheet" href="style/modal.css">
+  <link rel="stylesheet" type="text/css" href="style/styles.css">
+  <link rel="stylesheet" href="style/icons.css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+
+  <div id="top">
+    <div class="topbar clearfix">
+      <a href="/">
+        <ul class="brands clearfix">
+          <li class="insta-logo"></li>
+          <li class="insta-logo-type"></li>
+        </ul>
+      </a>
+      <form action="/search">
+        <input type="text" class="text-field search" name="name" placeholder="Search">
+      </form>
+      <ul class="links">
+        <li class="link explore-icon explore"></li>
+        <li class="link notifications">
+          <div class="like-icon"></div>
+          <ul class="notif-list">
+            <li class="notif clearfix">
+              <div class="avatar-def user-image img1"></div>
+              <div class="notif-info">
+                <p class="notif-msg"><span class="username">don_prince</span> started following you. <span class="notif-time">1h</span></p>
+                <button class="def-button follow">follow</button>
+              </div>
+            </li>
+            <li class="notif clearfix">
+              <div class="avatar-def user-image img2"></div>
+              <div class="notif-info">
+                <p class="notif-msg"><span class="username">shades_of_lin</span> liked your photo. <span class="notif-time">1h</span></p>
+                <div class="notif-image"></div>
+              </div>
+            </li>
+            <li class="notif clearfix">
+              <div class="avatar-def user-image"></div>
+              <div class="notif-info">
+                <p class="notif-msg"><span class="username">i_am_2e</span> liked your photo. <span class="notif-time">2h</span></p>
+                <div class="notif-image"></div>
+              </div>
+            </li>
+            <li class="notif clearfix">
+              <div class="avatar-def user-image img1"></div>
+              <div class="notif-info">
+                <p class="notif-msg"><span class="username">don_prince</span> started following you. <span class="notif-time">3h</span></p>
+                <button class="def-button follow">follow</button>
+              </div>
+            </li>
+            <li class="notif clearfix">
+              <div class="avatar-def user-image img2"></div>
+              <div class="notif-info">
+                <p class="notif-msg"><span class="username">shades_of_lin</span> liked your photo. <span class="notif-time">3h</span></p>
+                <div class="notif-image"></div>
+              </div>
+            </li>
+            <li class="notif clearfix">
+              <div class="avatar-def user-image"></div>
+              <div class="notif-info">
+                <p class="notif-msg"><span class="username">i_am_2e</span> liked your photo. <span class="notif-time">3h</span></p>
+                <div class="notif-image"></div>
+              </div>
+            </li>
+          </ul>
+        </li>
+        <a href="/profile">
+          <li class="link user-icon profile"></li>
+        </a>
+      </ul>
+    </div>
+  </div>
+  <div id="body">
+    <ul class="post-list">
+      <p class="paragraph-add">Add a post</p>
+      <button class="gg-add add-post" aria-controls="add-post"></button>
+      <% for(let i = 0; i < posts.length; i++) { %>
+      <li class="post">
+        <div class="post-header clearfix">
+          <div class="user-image avatar-def img2"></div>
+          <h4 class="username"><a href="/search?name=<%= posts[i].userName %>"><%= posts[i].userName %></a></h4>
+          <h4 class="post-time">3h</h4>
+        </div>
+        <div>
+          <img src="<%= posts[i].image %>" class="post-image" alt="">
+        </div>
+        <h4 class="post-likes"><%= posts[i].likes.length %> likes</h4>
+        <p class="post-caption"><span class="username"><%= posts[i].userName %></span> <%= posts[i].title %></p>
+        <ul class="post-comments">
+          <% for(let j = 0; j < posts[i].comments.length; j++) { %>
+          <li class="comment"><span class="username"><%= posts[i].comments[j].postedBy %></span> <%= posts[i].comments[j].text %></li>
+          <% } %>
+        </ul>
+        <div class="post-actions clearfix">
+          <form action="/post/like/<%= posts[i]._id %>?_method=PUT" method="post">
+            <button class="like-icon like-post"></button>
+          </form>
+
+          <form action="/post/postComment/<%= posts[i]._id %>?_method=PUT" method="post">
+            <input type="text" name="text" class="comment text-field" placeholder="Add a comment...">
+            <input type="submit" value="Post" id="comment">
+          </form>
+        </div>
+      </li>
+      <% } %>
+      <!-- Post template below -->
+      <!-- <li class="post">
+        <div class="post-header clearfix">
+          <div class="user-image avatar-def img2"></div>
+          <h4 class="username">blawz_</h4>
+          <h4 class="post-time">3h</h4>
+        </div>
+        <div class="post-image"></div>
+        <h4 class="post-likes">85 likes</h4>
+        <p class="post-caption"><span class="username">blawz_</span> As if you were on fire from within</p>
+        <ul class="post-comments">
+          <li class="comment"><span class="username">lolade_money</span> I know right</li>
+          <li class="comment"><span class="username">oladips</span> Awesome!</li>
+        </ul>
+        <div class="post-actions clearfix">
+          <div class="like-icon like-post"></div>
+          <input type="text" name="comment" class="comment text-field" placeholder="Add a comment...">
+        </div>
+      </li> -->
+    </ul>
+  </div>
+
+  <%- include("./addPost.ejs")%>
+
+  <script type="text/javascript" src="js/app.js"></script>
+  <script src="js/modal.js"></script>
+</body>
+
+</html>
